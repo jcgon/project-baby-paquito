@@ -1,34 +1,26 @@
-CC=gcc
-OUTPUT=projectBbPacoStanley
-CFLAGS=-std=c99
-VFLAGS=-t -Wall -Wextra
-LDFLAGS=-lm -lncurses
-DEPS=choices.h choose.h shout.h cervatillo.h global.h ventanales.h
+#Makefile Borrecurses 4 da win
+#CC=/usr/bin/gcc
+OUTPUT=ncurios
+CFLAGS=-std=c99 
+VFLAGS=-t -Wall -Wextra 
+LDFLAGS= -lm -lncurses
+DEPS=libncurses5-dev,cmake,build-essential,ld,binutils
 
 
-all : projectNULL.o
-	echo "Building All, may take a sec..."
-	$(CC) $(CFLAGS) -o $(OUTPUT) $^ $(DEPS) $(LDFLAGS) 
+all: ncurios.o 
+	echo "Compilando Archivos" 
+	cc ncurios.c $(LDFLAGS) -o $(OUTPUT)
 
-verbal : projectNULL.o
-	echo "Building All, may take a sec..."
-	$(CC) $(CFLAGS) $(VFLAGS) -o $(OUTPUT) $^ $(DEPS) $(LDFLAGS) 
+verbose: ncurios.o
+	cc $(CFLAGS) $(VFLAGS) ncurios.c $(LDFLAGS) -o $(OUTPUT)
 
-projectNULL.o : projectNULL.c $(DEPS)
-	cc -c -g $< -o $@ $(LDFLAGS)
-choices.o : choices.h
-	cc -c -g $< -o $@ $(LDFLAGS)
-choose.o :  choose.h
-	cc -c -g $< -o $@ $(LDFLAGS)
-shout.o :  shout.h
-	cc -c -g $< -o $@ $(LDFLAGS)
-cervatillo.o : cervatillo.h
-	cc -c -g $< -o $@ $(LDFLAGS)
-global.o : global.h
-	cc -c -g $< -o $@ $(LDFLAGS)
-ventanales.o : ventanales.h
-	cc -c -g $< -o $@ $(LDFLAGS)
-like_a_tree :
-	aplay maketree.wav
 clean:
-	rm *.o *~ projectBbPacoStanley
+	rm *.o *~ ncurios 
+
+list_deps: 
+	echo "Dependencias Necesarias:"
+	echo $(DEPS)
+
+ 
+#		Me gustan los Caballitos
+#					Pobre Bebe Paquito
